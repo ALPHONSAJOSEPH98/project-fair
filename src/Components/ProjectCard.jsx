@@ -13,7 +13,9 @@ import {
 import { FaGithub } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 
-function ProjectCard() {
+function ProjectCard({projects}) {
+  console.log(projects);
+  
   const [optSmModal, setOptSmModal] = useState(false);
 
   const toggleOpen = () => setOptSmModal(!optSmModal);
@@ -21,9 +23,9 @@ function ProjectCard() {
     <div className='container'>
      <Card onClick={toggleOpen} style={{ width: '20rem' }}>
      
-        <Card.Img height={300} className='w-100 mt-4 container' variant="top" src="https://thumbs.dreamstime.com/z/thin-line-design-concept-project-website-banner-template-vector-illustration-creative-technical-process-preview-93300177.jpg" />
+        <Card.Img height={300} className='w-100 mt-4 container' variant="top" src={projects.projectImage} />
         <Card.Body>
-        <Card.Title>project</Card.Title>
+        <Card.Title>{projects.title}</Card.Title>
       </Card.Body>
     </Card>
 
@@ -31,7 +33,7 @@ function ProjectCard() {
         <MDBModalDialog size='lg'>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle>project Name</MDBModalTitle>
+              <MDBModalTitle></MDBModalTitle>
               <MDBBtn className='btn-close' color='none' onClick={toggleOpen}></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody >
@@ -43,10 +45,11 @@ function ProjectCard() {
                 <h2>
                   Description
                 </h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quidem, hic explicabo nostrum, vel magnam facere quis doloremque necessitatibus non dolorum? Eaque enim perferendis consectetur provident adipisci odit dolor deserunt.
+                <p>
+                  {projects.overview}
                 </p>
                 <h3>Technologies</h3>
-                React
+                {projects.language}
                  
               </div>
               </div>

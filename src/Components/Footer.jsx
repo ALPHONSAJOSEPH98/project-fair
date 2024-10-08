@@ -11,7 +11,7 @@ function Footer() {
   return (
     <div>
       <hr />
-      <MDBFooter className='bg-dark text-center text-white'>
+      <MDBFooter className='bg-info text-center text-white'>
       <MDBContainer className='p-4 pb-0'>
         <section className='mb-4'>
           <MDBBtn

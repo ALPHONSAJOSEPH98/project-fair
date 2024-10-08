@@ -12,7 +12,7 @@ function Profile() {
         <div className="row">
             <div className="col d-flex justify-content-between ">
                 <h5 className='text-center mt-3 '>Profile Update</h5>
-                 <button  onClick={toggleOpen} className='border-0 p-0 bg-light  fs-3'><FiUpload /></button>
+                 <button  onClick={toggleOpen} className='border-0 p-0 bg-light  fs-3'><FiUpload className='text-info' /></button>
             </div>
             <MDBCollapse open={isOpen}>
             <div className='text-center pb-5 mt-3'>
@@ -30,7 +30,7 @@ function Profile() {
       <FloatingLabel controlId="floatingPassword" label="Linkedin">
         <Form.Control type="text" placeholder="Linkedin" />
       </FloatingLabel> <br /> 
-             <button className='btn btn-dark '>Update</button> <br />
+             <button className='btn btn-info '>Update</button> <br />
             </div>
             </MDBCollapse>
         </div>

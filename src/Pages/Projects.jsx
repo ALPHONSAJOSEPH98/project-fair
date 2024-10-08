@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProjectCard from '../Components/ProjectCard'
 import { FaSearch } from "react-icons/fa";
+import { getAllProjectsApi } from '../Services/Allapis';
 function Projects() {
+  const [projects, setProjects] = useState([])
+  const getAllProjects =  async()=>{
+    let token = sessionStorage.getItem('token')
+   if(token){
+    const reqHeader ={
+      "Content-Type":"application/json",
+      "Authorization":"Bearer " + token
+    }
+    try{
+      const allProjects = await getAllProjectsApi(reqHeader)
+    console.log(allProjects.data);
+    if(allProjects.status==200){
+      setProjects(allProjects.data)
+    }
+    }
+    catch(error){
+      console.log(error);
+      
+    }
+   }
+    
+  }
+  useEffect(()=>{
+    getAllProjects()
+  },[])
   return (
     <div>
        <h2 className='text-center mt-3'>All Projects</h2>
@@ -12,8 +38,13 @@ function Projects() {
        </div>
        </div>
        
-      <div className='mt-5'>
-        <ProjectCard/>
+      <div className="row">
+      {
+        projects.length>0 ?projects.map(item=>(<div className=' col mt-5'>
+          <ProjectCard projects={item}/>
+        </div>)):
+        <p>Cant fetch data</p>
+      }
       </div>
     </div>
   )

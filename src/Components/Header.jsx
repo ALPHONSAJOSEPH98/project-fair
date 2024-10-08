@@ -9,7 +9,7 @@ import { GrProjects } from "react-icons/gr";
 function Header() {
   return (
     <div>
-      <MDBNavbar  className='bg-dark'>
+      <MDBNavbar  className='bg-info'>
         <MDBContainer fluid>
           <MDBNavbarBrand href='#'>
             <img

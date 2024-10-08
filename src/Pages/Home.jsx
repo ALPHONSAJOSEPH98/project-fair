@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ProjectCard from '../Components/ProjectCard'
 
 function Home() {
+  let token = sessionStorage.getItem("token")
   return (
     <div>
         <div className='d-flex mt-5 justify-content-around ms-5' >
@@ -14,23 +15,40 @@ function Home() {
              <img className='w-75 ' src="https://www.ntaskmanager.com/wp-content/uploads/2020/02/What-is-a-Project-1-scaled.jpg" alt="" />
             </div>
         </div>
-         <div className='text-center mt-5 '>
-            <Link to={'/login'} >
-            <button className='btn btn-dark'> Get Started</button>
+         {
+          token ? 
+          <div className='text-center mt-5 '>
+            <Link to={'/dashboard'} >
+            <button className='btn btn-outline-info'> View Dashboard</button>
             </Link>
             
          </div>
+         :
+         <div className='text-center mt-5 '>
+            <Link to={'/login'} >
+            <button className='btn btn-info'> Get Started</button>
+            </Link>
+            
+         </div>
+         }
 
          <div>
            
          </div>
-
+   
          <div>
           <h2 className='text-center mt-4'>Explore Our Project</h2>
           <div className=" container">
             <ProjectCard/>
           </div>
+          <div className='text-center mt-4 mb-3'>
+           <Link to={'/Projects'}>
+           <button className='btn btn-outline-info mt-4'>View all projects</button>
+           </Link>
+          </div>
+       
          </div>
+          
     </div>
   )
 }
