@@ -22,5 +22,5 @@ export const getUserProjectsApi = async(reqHeader)=>{
 }
 
 export const getHomeProjectsApi = async()=>{
-    return await commonAPI('get' , `${serverURL}/api/getHomeProject` ,"" )
+    return await commonAPI('get' , `${serverURL}/api/getHomeProject` ,"","" )
 }

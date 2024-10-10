@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   MDBBtn,
   MDBModal,
@@ -15,8 +15,10 @@ import {ToastContainer,  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { addProjectApi } from '../Services/Allapis';
-function Add() {
+import { addProjectContextResponse } from '../ContextAPI/ContextShare';
 
+function Add() {
+   const {addProjectRes ,setAddProjectRes}=useContext(addProjectContextResponse)
   const [optSmModal, setOptSmModal] = useState(false);
 
   const toggleOpen = () => setOptSmModal(!optSmModal);
@@ -82,6 +84,9 @@ else{
           const response =await addProjectApi(reqBody,reqHeader)
           console.log(response);
           if(response.status===200){
+            setAddProjectRes(response.data)
+            console.log(response.data);
+            
             toast.success('Project added succesfully', {
               position: "top-center",
               autoClose: 5000,
@@ -127,6 +132,7 @@ else{
       }
     }
   }
+  
   return (
     <div>
         <button onClick={toggleOpen} style={{float:"right"}} className='btn btn-info'>
